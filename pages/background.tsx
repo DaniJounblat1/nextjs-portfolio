@@ -60,3 +60,10 @@ export const StarsCanvas = () => (
     `}</style>
   </>
 );
+const BackgroundPage = () => (
+  <div>
+    <StarsCanvas />
+  </div>
+);
+
+export default BackgroundPage;

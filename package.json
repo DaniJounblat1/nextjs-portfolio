@@ -16,6 +16,8 @@
     "@material-ui/core": "^4.12.4",
     "@react-three/drei": "^9.106.0",
     "@react-three/fiber": "^8.16.6",
+    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/parser": "^7.12.0",
     "maath": "^0.10.7",
     "next": "^12.3.4",
     "nodemailer": "^6.9.13",
@@ -24,11 +26,12 @@
     "react-swipeable-views": "^0.14.0",
     "sass": "^1.77.2",
     "three": "^0.164.1",
+    "typescript": "^5.4.5",
     "workbox-build": "^7.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.13",
-    "eslint": "8.20.0",
+    "eslint": "^9.4.0",
     "eslint-config-next": "12.2.3"
   }
 }
