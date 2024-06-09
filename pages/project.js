@@ -36,7 +36,7 @@ const Project = () => {
             </div>
             <div className="projectSection">
                 <div className="projectItem">
-                    <div class="laptop-container">
+                    <div className="laptop-container">
                         <img src="/img/laptop.png" alt="Laptop" />
 
                         <Slideshow images={images} />

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useEffect } from "react";
 
-const education = () => {
+const Education = () => {
     const router = useRouter();
 
     const zoomOut = e => {
@@ -59,4 +59,4 @@ const education = () => {
     );
 };
 
-export default education;
+export default Education;
