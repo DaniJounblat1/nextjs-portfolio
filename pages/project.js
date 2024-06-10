@@ -1,9 +1,8 @@
-
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Link from "next/link";
-import Slideshow from "./Slideshow";
+// import Slideshow from "./Slideshow";
 import Footer from "./Footer";
 
 const Project = () => {
@@ -39,7 +38,9 @@ const Project = () => {
                     <div className="laptop-container">
                         <img src="/img/laptop.png" alt="Laptop" />
 
-                        <Slideshow images={images} />
+                        {
+                            //<Slideshow images={images} />
+                        }
                     </div>
 
                     <h2 className="projectTitle">Samsung E-commerce Website</h2>

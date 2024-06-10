@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -31,7 +32,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.13",
-    "eslint": "^9.4.0",
-    "eslint-config-next": "12.2.3"
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^12.2.3"
+  },
+  "overrides": {
+    "punycode": "latest"
   }
 }
