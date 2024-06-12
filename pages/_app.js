@@ -13,7 +13,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
 
-
 function MyApp({ Component, pageProps }) {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(true);
@@ -52,15 +51,8 @@ function MyApp({ Component, pageProps }) {
         const prefetchRoutes = [
             "/about",
             "/contactForm",
-            "/education",
-            "/nasa",
-            "/header",
-            "/Footer",
-            "/",
             "/project",
-            "/background",
-            "/Slideshow",
-            "/blog"
+            "/background"
         ];
 
         prefetchRoutes.forEach(route => router.prefetch(route));
@@ -69,10 +61,12 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <link rel="preload" href="/img/dani.png" as="image" />
-                <link rel="preload" href="/img/daniStars.png" as="image" />
-                <link rel="preload" href="/img/jounblat.png" as="image" />
-                <link rel="preload" href="/img/jounblatStars.png" as="image" />
+                {
+                    // <link rel="preload" href="/img/dani.png" as="image" />
+                    //                 <link rel="preload" href="/img/daniStars.png" as="image" />
+                    //                 <link rel="preload" href="/img/jounblat.png" as="image" />
+                    //                 <link rel="preload" href="/img/jounblatStars.png" as="image" />
+                }
                 <link rel="preload" href="/img/fullsun.gif" as="image" />
                 <link rel="preload" href="/img/earth.gif" as="image" />
                 <link rel="preload" href="/img/satellite.gif" as="image" />
@@ -81,9 +75,18 @@ function MyApp({ Component, pageProps }) {
                 <link rel="preload" href="/img/mercury.gif" as="image" />
                 <link rel="preload" href="/img/ufo.gif" as="image" />
                 <link rel="preload" href="/img/ss1.jpg" as="image" />
-                <link rel="preload" href="/img/ss3.jpg" as="image" />
-                <link rel="preload" href="/img/ss4.jpg" as="image" />
-                <link rel="preload" href="/img/ss5.jpg" as="image" />
+                <link
+                    rel="preload"
+                    href="/sound.m4a"
+                    as="audio"
+                    type="audio/m4a"
+                />
+                <link
+                    rel="preload"
+                    href="/img/blackhole.webm"
+                    as="video"
+                    type="video/webm"
+                />
             </Head>
             <AudioButton
                 handlePlayPause={handlePlayPause}
