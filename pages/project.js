@@ -47,7 +47,7 @@ const Project = () => {
                         with a user-friendly interface.
                     </p>
                     <div className="linkContainer">
-                        <Link href="https://github.com/DaniJounblat1/Samsung-Ecommerce-PHP.git">
+                        <Link href="https://github.com/DaniJounblat1/php-samsung-website.git">
                             <a className="githubLink">GitHub</a>
                         </Link>
                         <Link href="https://samsungdemo.kesug.com">
