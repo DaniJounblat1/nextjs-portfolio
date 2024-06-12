@@ -13,9 +13,6 @@ const Education = () => {
 
     return (
         <section>
-            <header>
-                <nav id="mainNav"></nav>
-            </header>
             <div className="venusSection">
                 <a href="#" onClick={zoomOut} className="closeButton">
                     &times;
@@ -28,28 +25,23 @@ const Education = () => {
                     />
                 </div>
                 <p className="mainTitle venusTitle">Education</p>
+                <strong>Degree:</strong> <br />
+                <p> Bachelor of Management Information Systems (MIS)</p>
+                <strong>Institution:</strong> <br />
+                <p> Islamic University of Lebanon, Baalback Campus</p>
+                <strong>Duration of Study:</strong> <br />
+                <p> 2020 – 2023</p>
+                <strong className="strong"> Relevant Coursework:</strong> <br />
                 <p>
-                    <strong>Degree:</strong> <br />
-                    Bachelor of Management Information Systems (MIS)
-                </p>
-                <p>
-                    <strong>Institution:</strong> <br />
-                    Islamic University of Lebanon, Baalback Campus
-                </p>
-                <p>
-                    <strong>Duration of Study:</strong> <br />
-                    2020 – 2023
-                </p>
-                <p>
-                    <strong>Relevant Coursework:</strong> <br />
                     Included key subjects such as Database Management, where I
                     gained proficiency in SQL and MySQL database technologies;
                     Web Development, which covered both front-end and back-end
                     development skills; and Business Administration, focusing on
                     management principles and business strategy.
                 </p>
+                <strong>General Average:</strong> <br />
                 <p>
-                    <strong>General Average:</strong> <br />
+                    {" "}
                     70/100, indicating a solid grasp of course materials and a
                     strong foundational knowledge in both technical and
                     managerial disciplines.

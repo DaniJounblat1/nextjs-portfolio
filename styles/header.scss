@@ -16,7 +16,7 @@ $purple: #682ae9;
 }
 
 .play-pause-btn {
-    padding: 5px 10px;
+    padding-left: 5px;
     font-size: 5rem;
     cursor: pointer;
     border: none;
@@ -29,6 +29,4 @@ $purple: #682ae9;
     background-color: transparent;
 }
 
-.play-pause-btn:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-}
+

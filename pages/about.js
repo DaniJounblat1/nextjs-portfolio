@@ -1,7 +1,23 @@
-import React, { useEffect } from "react";
+// pages/about.js
+import React from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
-import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faDownload,
+    faDatabase,
+    faCode,
+    faTerminal
+} from "@fortawesome/free-solid-svg-icons";
+import {
+    faHtml5,
+    faCss3Alt,
+    faJsSquare,
+    faPhp,
+    faGit,
+    faGithub,
+    faNpm,
+    faAndroid
+} from "@fortawesome/free-brands-svg-icons";
 
 const About = () => {
     const router = useRouter();
@@ -10,13 +26,9 @@ const About = () => {
         e.preventDefault();
         router.push("/");
     };
+
     return (
         <section className="earthSection">
-           
-            <header>
-                <nav id="mainNav"></nav>
-            </header>
-
             <p onClick={zoomOut} className="closeButton">
                 &times;
             </p>
@@ -40,51 +52,78 @@ const About = () => {
             <p>
                 Dani Jounblat <span>From Lebanon</span>
             </p>
-            <a href="cv.docx" download className="cv">
-                CV <i className="fa-solid fa-download"></i>
+            <a href="./cv.pdf" download className="cv">
+                Download CV <FontAwesomeIcon icon={faDownload} />
             </a>
             <p className="paragraph">
                 MIS graduate with a passion for web development Front-end &
                 Back-end.
             </p>
-            <p className="pTitle">Skills</p>
+            <p className="pTitle">Skills :</p>
             <div className="skillsContainer">
                 <div className="column">
                     <p>
-                        <i className="fa-brands fa-html5"></i> HTML
+                        <FontAwesomeIcon
+                            icon={faHtml5}
+                            className="fa-download"
+                        />{" "}
+                        HTML
                     </p>
                     <p>
-                        <i className="fa-brands fa-css3-alt"></i> CSS
+                        <FontAwesomeIcon
+                            icon={faCss3Alt}
+                            className="fa-download"
+                        />{" "}
+                        CSS
                     </p>
                     <p>
-                        <i className="fa-brands fa-js-square"></i> JS
+                        <FontAwesomeIcon
+                            icon={faJsSquare}
+                            className="fa-download"
+                        />{" "}
+                        JS
                     </p>
                 </div>
                 <div className="column">
                     <p>
-                        <i className="fa-brands fa-php"></i> PHP
+                        <FontAwesomeIcon icon={faPhp} className="fa-download" />{" "}
+                        PHP
                     </p>
                     <p>
-                        <i className="fa-solid fa-database"></i> MySql
+                        <FontAwesomeIcon
+                            icon={faDatabase}
+                            className="fa-download"
+                        />{" "}
+                        MySql
                     </p>
                     <p>
-                        <i className="fa-solid fa-database"></i> SQL
+                        <FontAwesomeIcon
+                            icon={faDatabase}
+                            className="fa-download"
+                        />{" "}
+                        SQL
                     </p>
                 </div>
                 <div className="column">
                     <p>
-                        <i className="fa-brands fa-html5"></i> HTML
+                        <FontAwesomeIcon icon={faGit} className="fa-download" />{" "}
+                        Git
                     </p>
                     <p>
-                        <i className="fa-brands fa-css3-alt"></i> CSS
+                        <FontAwesomeIcon
+                            icon={faGithub}
+                            className="fa-download"
+                        />{" "}
+                        GitHub
                     </p>
                     <p>
-                        <i className="fa-brands fa-js-square"></i> JS
+                        <FontAwesomeIcon icon={faNpm} className="fa-download" />{" "}
+                        Next
                     </p>
                 </div>
             </div>
 
-            <p className="pTitle">Languages</p>
+            <p className="pTitle">Languages :</p>
             <div className="languages">
                 <p>
                     Arabic <span>Fluent</span>
@@ -96,8 +135,39 @@ const About = () => {
                     French <span>Elementary</span>
                 </p>
             </div>
-
-            
+            <div className="toolsContainer">
+                <p className="pTitle">Tools:</p>
+                <div className="column">
+                    <p>
+                        <FontAwesomeIcon
+                            icon={faCode}
+                            className="fa-download"
+                        />{" "}
+                        VS Code
+                    </p>
+                    <p>
+                        <FontAwesomeIcon
+                            icon={faTerminal}
+                            className="fa-download"
+                        />{" "}
+                        Termux
+                    </p>
+                    <p>
+                        <FontAwesomeIcon
+                            icon={faAndroid}
+                            className="fa-download"
+                        />{" "}
+                        Acode
+                    </p>
+                    <p>
+                        <FontAwesomeIcon
+                            icon={faGithub}
+                            className="fa-download"
+                        />{" "}
+                        GitHub
+                    </p>
+                </div>
+            </div>
         </section>
     );
 };

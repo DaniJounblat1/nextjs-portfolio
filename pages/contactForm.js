@@ -107,9 +107,9 @@ export default function ContactForm() {
                         <button type="submit">Send</button>
                     </form>
                 ) : (
-                    <p className="sentMessage">
+                    <h3 className="sentMessage">
                         Message sent successfully. Redirecting...
-                    </p>
+                    </h3>
                 )}
             </div>
         </section>

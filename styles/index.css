@@ -14,14 +14,15 @@ body {
     overflow-x: hidden;
 }
 
-/* .blur {
+.blur {
     width: 100%;
     height: 30rem;
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 35%;
     filter: blur(10px);
-} */
+    display: none;
+}
 .blackhole {
     width: 100%;
     height: 100%;
@@ -466,24 +467,6 @@ body.no-scroll {
     top: 10%;
 }
 
-.close {
-    color: black;
-    top: 5%;
-    right: 5%;
-    position: absolute;
-    border-radius: 10px;
-    font-size: 5rem;
-    cursor: pointer;
-    background: unset;
-    border: unset;
-    color: #ccc;
-}
-
-.close:hover {
-    transform: scale(1.3);
-    transition: transform 1s ease;
-}
-
 @media only screen and (max-width: 768px) and (orientation: portrait) {
     html {
         font-size: 6px;
@@ -627,10 +610,11 @@ body.no-scroll {
     .blur {
         width: 100%;
         height: 30rem;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.6);
         position: absolute;
-        top: 35%;
+        top: 38%;
         filter: blur(10px);
+        display: block;
     }
     .NameContainer {
         display: flex;

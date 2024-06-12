@@ -1,4 +1,3 @@
-// pages/_app.js
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -10,9 +9,10 @@ import { StarsCanvas } from "./background";
 import AudioButton from "./header";
 import Footer from "./Footer.js";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 
-config.autoAddCss = false; // Tell FontAwesome to skip adding the CSS automatically since it's already imported
+config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
+
 
 function MyApp({ Component, pageProps }) {
     const audioRef = useRef(null);
@@ -29,8 +29,24 @@ function MyApp({ Component, pageProps }) {
     };
 
     useEffect(() => {
-        audioRef.current.play();
+        // Check if the audio is paused and if so, play it
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(_ => {
+                    // Autoplay started
+                })
+                .catch(error => {
+                    // Autoplay was prevented, let's start the audio when the user interacts with the page
+                    document.addEventListener("click", startAudio);
+                });
+        }
     }, []);
+
+    const startAudio = () => {
+        audioRef.current.play();
+        document.removeEventListener("click", startAudio);
+    };
 
     useEffect(() => {
         const prefetchRoutes = [
@@ -49,27 +65,6 @@ function MyApp({ Component, pageProps }) {
 
         prefetchRoutes.forEach(route => router.prefetch(route));
     }, [router]);
-
-    useEffect(() => {
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", function () {
-                navigator.serviceWorker.register("/service-worker.js").then(
-                    function (registration) {
-                        console.log(
-                            "Service Worker registration successful with scope: ",
-                            registration.scope
-                        );
-                    },
-                    function (err) {
-                        console.log(
-                            "Service Worker registration failed: ",
-                            err
-                        );
-                    }
-                );
-            });
-        }
-    }, []);
 
     return (
         <>
@@ -96,7 +91,7 @@ function MyApp({ Component, pageProps }) {
             />
             <StarsCanvas />
             <Component {...pageProps} />
-            <audio ref={audioRef} src="" loop />
+            <audio ref={audioRef} src="./sound.m4a" loop />
             <Footer />
         </>
     );

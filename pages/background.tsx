@@ -6,12 +6,30 @@ import * as random from "maath/random";
 import { useState, useRef, Suspense } from "react";
 import type { Points as PointsType } from "three";
 
+// Function to generate random colors
+const generateColors = (numStars: number): Float32Array => {
+  const colors = new Float32Array(numStars * 3);
+  for (let i = 0; i < numStars; i++) {
+    const r = Math.random();
+    const g = Math.random();
+    const b = Math.random();
+    colors.set([r, g, b], i * 3);
+  }
+  return colors;
+};
+
+// Main component for star background
 export const StarBackground = (props: PointsProps) => {
   const ref = useRef<PointsType | null>(null);
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(10000), { radius: 1.2 }) 
-  );
+  const numStars = 1000; // Reduced number of stars
 
+  // Generate sphere positions and colors
+  const [sphere] = useState<Float32Array>(() =>
+    random.inSphere(new Float32Array(numStars * 3), { radius: 1.2 }) as Float32Array
+  );
+  const [colors] = useState<Float32Array>(() => generateColors(numStars));
+
+  // Animate the star rotation
   useFrame((_state, delta) => {
     if (ref.current) {
       ref.current.rotation.x -= delta / 10;
@@ -24,14 +42,15 @@ export const StarBackground = (props: PointsProps) => {
       <Points
         ref={ref}
         stride={3}
-        positions={new Float32Array(sphere)}
+        positions={sphere}
+        colors={colors}
         frustumCulled
         {...props}
       >
         <PointMaterial
           transparent
-          color="#fff"
-          size={0.002}
+          vertexColors
+          size={0.003} // Adjusted size for smaller stars
           sizeAttenuation
           depthWrite={false}
         />
@@ -40,6 +59,7 @@ export const StarBackground = (props: PointsProps) => {
   );
 };
 
+// Canvas component for the star background
 export const StarsCanvas = () => (
   <>
     <div className="stars-canvas">
@@ -60,6 +80,8 @@ export const StarsCanvas = () => (
     `}</style>
   </>
 );
+
+// Main background page component
 const BackgroundPage = () => (
   <div>
     <StarsCanvas />

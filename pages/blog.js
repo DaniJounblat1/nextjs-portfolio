@@ -61,13 +61,9 @@ const Blog = () => {
               <p><strong>Issue:</strong> Cannot access phpMyAdmin.</p>
               <p><strong>Solution:</strong> Use the Desktop site option in your browser for better control.</p>
              
-              <h2>Contributing</h2>
-              <p>Contributions are welcome! Please fork the repository and submit a pull request.</p>
-              <h2>Contact</h2>
-              <p>For any questions, contact me via email at <a href="mailto:bonmobp@gmail.com">bonmobp@gmail.com</a>.</p>
+            
               <p>Feel free to reach out if you have any questions or need further assistance!</p>
-              <h2>Hashtags</h2>
-              <p>#AndroidDevelopment #PHPServers #ApacheServer #MobileCoding #KSWeb #TrebEdit #AcodePro #MobileDevelopment #AndroidBackend #WebDevelopment #CodingOnAndroid #ServerSetup #MySQL #PHPMyAdmin #AndroidProgramming #BackendDevelopment #MobileApps #WebServer #CodeEditors #ProgrammingTools</p>
+            
             `
         }
         // Add more blog posts here if needed...

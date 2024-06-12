@@ -4,15 +4,9 @@ import { useEffect } from "react";
 import Link from "next/link";
 // import Slideshow from "./Slideshow";
 import Footer from "./Footer";
+import Iframe from "react-iframe";
 
 const Project = () => {
-    const images = [
-        "/img/ss1.jpg",
-        "/img/ss3.jpg",
-        "/img/ss4.jpg",
-        "/img/ss5.jpg"
-    ];
-
     const router = useRouter();
 
     const zoomOut = e => {
@@ -37,10 +31,15 @@ const Project = () => {
                 <div className="projectItem">
                     <div className="laptop-container">
                         <img src="/img/laptop.png" alt="Laptop" />
-
-                        {
-                            //<Slideshow images={images} />
-                        }
+                        <div className="slideshow-root">
+                            <div className="imgCon">
+                                <img
+                                    src="/img/ss1.jpg"
+                                    className="slideshow-image"
+                                    alt="Laptop"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <h2 className="projectTitle">Samsung E-commerce Website</h2>
