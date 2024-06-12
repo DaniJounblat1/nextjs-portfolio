@@ -2,9 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Link from "next/link";
-// import Slideshow from "./Slideshow";
 import Footer from "./Footer";
-import Iframe from "react-iframe";
 
 const Project = () => {
     const router = useRouter();
