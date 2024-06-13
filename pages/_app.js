@@ -61,12 +61,11 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                {
-                    // <link rel="preload" href="/img/dani.png" as="image" />
-                    //                 <link rel="preload" href="/img/daniStars.png" as="image" />
-                    //                 <link rel="preload" href="/img/jounblat.png" as="image" />
-                    //                 <link rel="preload" href="/img/jounblatStars.png" as="image" />
-                }
+                <link rel="preload" href="/img/dani.png" as="image" />
+                <link rel="preload" href="/img/daniStars.png" as="image" />
+                <link rel="preload" href="/img/jounblat.png" as="image" />
+                <link rel="preload" href="/img/jounblatStars.png" as="image" />
+
                 <link rel="preload" href="/img/fullsun.gif" as="image" />
                 <link rel="preload" href="/img/earth.gif" as="image" />
                 <link rel="preload" href="/img/satellite.gif" as="image" />
