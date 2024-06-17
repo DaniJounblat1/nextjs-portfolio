@@ -5,6 +5,12 @@ footer div {
     line-height: 20px;
     align-items: center;
 }
+.home-footer {
+    position: absolute;
+    top: 200%;
+    left: 0;
+    right: 0;
+}
 .footer p {
     margin: 10px 0;
 }
@@ -56,5 +62,8 @@ color: #682ae9;
     }
     .footer p {
         font-size: 12px;
+    }
+    .madeWith{
+        font-size: 50rem;
     }
 }
