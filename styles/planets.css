@@ -582,7 +582,7 @@ section li {
   box-shadow: 0 0px 8px black;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  max-height: 250px;
+  max-height: auto;
   color: white;
 }
 
@@ -668,4 +668,17 @@ section li {
 
 .blogCon .readMore:hover {
   background-color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  .contact-container {
+    margin-top: 30%;
+    height: auto;
+  }
+  .nasa-library-container {
+    margin-top: 30% !important;
+  }
+  .blogCon {
+    margin-top: 20% !important;
+  }
 }
