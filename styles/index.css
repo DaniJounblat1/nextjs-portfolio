@@ -9,9 +9,38 @@ html {
     font-weight: 400;
     scroll-behavior: smooth;
 }
+
 body {
     background-color: #030000;
     overflow-x: hidden;
+}
+/* styles/loading.css */
+.loading-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  z-index: 9999;
+}
+
+.loading-bar {
+  width: 80%;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.loading-progress {
+  height: 100%;
+  background: #00bfff;
+  width: 0%;
+  transition: width 0.3s ease;
 }
 
 .blur {
