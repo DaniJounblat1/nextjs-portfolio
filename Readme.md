@@ -1,6 +1,8 @@
 # Portfolio Website
 
-Welcome to my portfolio website repository! This website showcases my projects and skills, created entirely on an Android phone using Termux and Acode editor, with Next.js 12.
+Welcome to my portfolio website repository! This website showcases my projects
+and skills, created entirely on an Android phone using Termux and Acode editor,
+with Next.js 13.
 
 ## Table of Contents
 
@@ -15,7 +17,11 @@ Welcome to my portfolio website repository! This website showcases my projects a
 
 ## Introduction
 
-This portfolio website is a personal project that showcases my work and skills as a developer. The entire site was developed using an Android phone with Termux and Acode editor, demonstrating that it's possible to create a professional web presence with minimal resources. Despite having no prior knowledge of frameworks, I utilized Next.js 12 to build this site.
+This portfolio website is a personal project that showcases my work and skills
+as a developer. The entire site was developed using an Android phone with Termux
+and Acode editor, demonstrating that it's possible to create a professional web
+presence with minimal resources. Despite having no prior knowledge of
+frameworks, I utilized Next.js 13 to build this site.
 
 Check out the live website [here](https://danijounblat.vercel.app/).
 
@@ -27,7 +33,7 @@ Check out the live website [here](https://danijounblat.vercel.app/).
 
 ## Technologies Used
 
-- **Next.js 12**: React-based framework for server-side rendering and static site generation.
+- **Next.js 13**: React-based framework for server-side rendering and static site generation.
 - **CSS and SCSS**: For styling the components and layouts.
 - **JavaScript**: Core language for adding interactivity.
 - **HTML5**: Standard markup language for creating web pages.
@@ -38,8 +44,8 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/DaniJounblat1/nextjs-portfolio.git
+   cd nextjs-portfolio
    ```
 
 2. **Install dependencies**:
