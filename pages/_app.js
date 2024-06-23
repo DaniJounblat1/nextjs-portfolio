@@ -10,42 +10,43 @@ import AudioButton from "./header";
 import Footer from "./Footer.js";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
+import Loading from "./loading"; // Import the loading component
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
 
 function MyApp({ Component, pageProps }) {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(true);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     const handlePlayPause = () => {
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.pause();
+            } else {
+                audioRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
         }
-        setIsPlaying(!isPlaying);
     };
 
     useEffect(() => {
-        // Check if the audio is paused and if so, play it
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-            playPromise
-                .then(_ => {
-                    // Autoplay started
-                })
-                .catch(error => {
+        const startAudio = () => {
+            if (audioRef.current) {
+                audioRef.current.play().catch(error => {
                     // Autoplay was prevented, let's start the audio when the user interacts with the page
                     document.addEventListener("click", startAudio);
                 });
-        }
-    }, []);
+                document.removeEventListener("click", startAudio);
+            }
+        };
 
-    const startAudio = () => {
-        audioRef.current.play();
-        document.removeEventListener("click", startAudio);
-    };
+        document.addEventListener("click", startAudio);
+        return () => {
+            document.removeEventListener("click", startAudio);
+        };
+    }, []);
 
     useEffect(() => {
         const prefetchRoutes = [
@@ -57,6 +58,36 @@ function MyApp({ Component, pageProps }) {
 
         prefetchRoutes.forEach(route => router.prefetch(route));
     }, [router]);
+
+    useEffect(() => {
+        const imagePaths = [
+            "/img/dani.png",
+            "/img/daniStars.png",
+            "/img/jounblat.png",
+            "/img/jounblatStars.png",
+            "/img/fullsun.gif",
+            "/img/earth.gif",
+            "/img/satellite.gif",
+            "/img/venus.gif",
+            "/img/shuttle.gif",
+            "/img/mercury.gif",
+            "/img/ufo.gif",
+            "/img/ss1.jpg"
+        ];
+
+        let loadedImagesCount = 0;
+
+        imagePaths.forEach(path => {
+            const img = new Image();
+            img.src = path;
+            img.onload = () => {
+                loadedImagesCount++;
+                if (loadedImagesCount === imagePaths.length) {
+                    setLoading(false);
+                }
+            };
+        });
+    }, []);
 
     return (
         <>
@@ -87,14 +118,20 @@ function MyApp({ Component, pageProps }) {
                     type="video/webm"
                 />
             </Head>
-            <AudioButton
-                handlePlayPause={handlePlayPause}
-                isPlaying={isPlaying}
-            />
-            <StarsCanvas />
-            <Component {...pageProps} />
-            <audio ref={audioRef} src="./sound.m4a" loop />
-            <Footer />
+            {loading ? (
+                <Loading />
+            ) : (
+                <>
+                    <AudioButton
+                        handlePlayPause={handlePlayPause}
+                        isPlaying={isPlaying}
+                    />
+                    <StarsCanvas />
+                    <Component {...pageProps} />
+                    <audio ref={audioRef} src="./sound.m4a" loop />
+                    <Footer />
+                </>
+            )}
         </>
     );
 }
