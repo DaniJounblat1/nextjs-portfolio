@@ -72,20 +72,41 @@ function MyApp({ Component, pageProps }) {
             "/img/shuttle.gif",
             "/img/mercury.gif",
             "/img/ufo.gif",
+            "/img/blackhole.webm",
+            "/sound.m4a",
             "/img/ss1.jpg"
         ];
 
-        let loadedImagesCount = 0;
+        let loadedItemsCount = 0;
 
         imagePaths.forEach(path => {
-            const img = new Image();
-            img.src = path;
-            img.onload = () => {
-                loadedImagesCount++;
-                if (loadedImagesCount === imagePaths.length) {
-                    setLoading(false);
-                }
-            };
+            if (path.endsWith(".webm")) {
+                const video = document.createElement("video");
+                video.src = path;
+                video.onloadeddata = () => {
+                    loadedItemsCount++;
+                    if (loadedItemsCount === imagePaths.length) {
+                        setLoading(false);
+                    }
+                };
+            } else if (path.endsWith(".m4a")) {
+                const audio = new Audio(path);
+                audio.oncanplaythrough = () => {
+                    loadedItemsCount++;
+                    if (loadedItemsCount === imagePaths.length) {
+                        setLoading(false);
+                    }
+                };
+            } else {
+                const img = new Image();
+                img.src = path;
+                img.onload = () => {
+                    loadedItemsCount++;
+                    if (loadedItemsCount === imagePaths.length) {
+                        setLoading(false);
+                    }
+                };
+            }
         });
     }, []);
 
