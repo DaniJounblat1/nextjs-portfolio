@@ -52,7 +52,7 @@ const About = () => {
             <p>
                 Dani Jounblat <span>From Lebanon</span>
             </p>
-            <a href="./cv.pdf" download className="cv">
+            <a href="./Danijounblat.pdf" download className="cv">
                 Download CV <FontAwesomeIcon icon={faDownload} />
             </a>
             <p className="paragraph">

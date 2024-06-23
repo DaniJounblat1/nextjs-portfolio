@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import "../styles/index.css";
 import "../styles/planets.scss";
 import "../styles/header.scss";
 import "../styles/footer.css";
-import { StarsCanvas } from "./background";
-import AudioButton from "./header";
-import Footer from "./Footer.js";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 import Loading from "./loading"; // Import the loading component
+
+const StarsCanvas = dynamic(() => import("./background"), { ssr: false });
+const AudioButton = dynamic(() => import("./header"), { ssr: false });
+const Footer = dynamic(() => import("./Footer.js"), { ssr: false });
 
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
 
@@ -49,32 +51,15 @@ function MyApp({ Component, pageProps }) {
     }, []);
 
     useEffect(() => {
-        const prefetchRoutes = [
-            "/about",
-            "/contactForm",
-            "/project",
-            "/background"
-        ];
-
-        prefetchRoutes.forEach(route => router.prefetch(route));
-    }, [router]);
-
-    useEffect(() => {
         const imagePaths = [
-            "/img/dani.png",
-            "/img/daniStars.png",
-            "/img/jounblat.png",
-            "/img/jounblatStars.png",
-            "/img/fullsun.gif",
             "/img/earth.gif",
-            "/img/satellite.gif",
+
             "/img/venus.gif",
-            "/img/shuttle.gif",
+
             "/img/mercury.gif",
-            "/img/ufo.gif",
+
             "/img/blackhole.webm",
-            "/sound.m4a",
-            "/img/ss1.jpg"
+            "/sound.m4a"
         ];
 
         let loadedItemsCount = 0;
@@ -83,6 +68,7 @@ function MyApp({ Component, pageProps }) {
             if (path.endsWith(".webm")) {
                 const video = document.createElement("video");
                 video.src = path;
+                video.preload = "metadata";
                 video.onloadeddata = () => {
                     loadedItemsCount++;
                     if (loadedItemsCount === imagePaths.length) {
@@ -91,6 +77,7 @@ function MyApp({ Component, pageProps }) {
                 };
             } else if (path.endsWith(".m4a")) {
                 const audio = new Audio(path);
+                audio.preload = "auto";
                 audio.oncanplaythrough = () => {
                     loadedItemsCount++;
                     if (loadedItemsCount === imagePaths.length) {
@@ -100,6 +87,7 @@ function MyApp({ Component, pageProps }) {
             } else {
                 const img = new Image();
                 img.src = path;
+                img.loading = "lazy";
                 img.onload = () => {
                     loadedItemsCount++;
                     if (loadedItemsCount === imagePaths.length) {
@@ -118,6 +106,7 @@ function MyApp({ Component, pageProps }) {
                 <link rel="preload" href="/img/jounblat.png" as="image" />
                 <link rel="preload" href="/img/jounblatStars.png" as="image" />
 
+                <link rel="preload" href="/img/ss1.jpg" as="image" />
                 <link rel="preload" href="/img/fullsun.gif" as="image" />
                 <link rel="preload" href="/img/earth.gif" as="image" />
                 <link rel="preload" href="/img/satellite.gif" as="image" />
@@ -125,19 +114,8 @@ function MyApp({ Component, pageProps }) {
                 <link rel="preload" href="/img/shuttle.gif" as="image" />
                 <link rel="preload" href="/img/mercury.gif" as="image" />
                 <link rel="preload" href="/img/ufo.gif" as="image" />
-                <link rel="preload" href="/img/ss1.jpg" as="image" />
-                <link
-                    rel="preload"
-                    href="/sound.m4a"
-                    as="audio"
-                    type="audio/m4a"
-                />
-                <link
-                    rel="preload"
-                    href="/img/blackhole.webm"
-                    as="video"
-                    type="video/webm"
-                />
+                <link rel="preload" href="/img/blackhole.webm" as="video" />
+                <link rel="preload" href="/sound.m4a" as="audio" />
             </Head>
             {loading ? (
                 <Loading />
