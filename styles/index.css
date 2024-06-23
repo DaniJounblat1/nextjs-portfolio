@@ -16,31 +16,31 @@ body {
 }
 /* styles/loading.css */
 .loading-screen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  z-index: 9999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    z-index: 9999;
 }
 
 .loading-bar {
-  width: 80%;
-  height: 20px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
+    width: 80%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .loading-progress {
-  height: 100%;
-  background: #00bfff;
-  width: 0%;
-  transition: width 0.3s ease;
+    height: 100%;
+    background: #00bfff;
+    width: 0%;
+    transition: width 0.3s ease;
 }
 
 .blur {
@@ -50,7 +50,6 @@ body {
     position: absolute;
     top: 40%;
     filter: blur(10px);
-   
 }
 .blackhole {
     width: 100%;
@@ -151,8 +150,7 @@ body.no-scroll {
 .shuttleElements:hover {
     transform: translate(24rem, 17rem) scale(1.1);
 }
-.shuttleImg,
-.shuttleImg2 {
+.shuttleImg {
     width: 15rem;
     height: auto;
 }
@@ -167,8 +165,7 @@ body.no-scroll {
 .ufoElements:hover {
     transform: translate(8rem, 17rem) scale(1.1);
 }
-.ufoImg,
-.ufoImg2 {
+.ufoImg {
     width: 14rem;
 }
 .names {
@@ -196,7 +193,7 @@ body.no-scroll {
 .ufoTitle {
     top: 1.5rem;
 }
-.spaceShipsImgs2,
+
 .spaceShipsImgs {
     position: absolute;
     top: 50%;
@@ -204,8 +201,7 @@ body.no-scroll {
     transform: translate(-50%, -50%);
     z-index: 3;
 }
-.satelliteImg,
-.satelliteImg2 {
+.satelliteImg {
     width: 13rem;
     height: auto;
     transform: translate(-50%, -50%) rotate(-60deg);
@@ -252,18 +248,23 @@ body.no-scroll {
     display: flex;
 }
 .venusElements {
-    width: 8.7rem;
-    height: 8.7rem;
+    width: 7.7rem;
+    height: 7.7rem;
     transform: translate(33rem, -20rem);
     border-radius: 50%;
+    overflow: hidden;
 }
 
-.venusDiv .venusImg,
-.venusDiv .venusImg2 {
-    width: 12rem;
-    height: 9rem;
-    transform: translate(-50%, -50%) rotate(180deg);
+.venusImg {
+    width: 11rem;
+    height: 8rem;
+    border-radius: 50%;
 }
+/* .venusName {
+    transform: translate(33rem, -20rem);
+    position: absolute;
+    z-index: 100;
+} */
 
 .earthDiv {
     width: 90rem;
@@ -281,8 +282,7 @@ body.no-scroll {
     transform: translate(44rem, -25rem);
     border-radius: 50%;
 }
-.planetsImgs,
-.planetsImgs2 {
+.planetsImgs {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -291,23 +291,15 @@ body.no-scroll {
     border-radius: 50%;
 }
 
-.earthImg2,
-.venusImg2,
-.mercuryImg2 {
-    z-index: 2;
-}
-
-.earthImg,
-.earthImg2 {
+.earthImg {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
 }
 
-.mercuryImg,
-.mercuryImg2 {
-    width: 7rem;
-    height: 7rem;
+.mercuryImg {
+    width: 18rem;
+    height: 13rem;
 }
 
 .planetsElements:hover {
@@ -316,7 +308,6 @@ body.no-scroll {
         transform 0.2s ease,
         box-shadow 0.2s ease,
         filter 0.2s ease;
-
     filter: brightness(1);
 }
 .earthElements:hover {
@@ -407,7 +398,7 @@ body.no-scroll {
         z-index: -20;
     }
     .mercuryName {
-        top: -25%;
+        top: -38%;
     }
     .mercuryElements {
         transform: translate(10rem, -20rem);
@@ -420,6 +411,11 @@ body.no-scroll {
         position: relative;
 
         transform: translate(1rem, -32rem);
+    }
+    .venusName {
+        transform: translate(-12rem, 6.5rem);
+        position: absolute;
+        z-index: 100;
     }
     .venusElements:hover {
         transform: translate(1rem, -32rem) scale(1.1);
@@ -451,8 +447,7 @@ body.no-scroll {
     .shuttleElements:hover {
         transform: translate(1rem, 32rem) scale(1.1);
     }
-    .shuttleImg,
-    .shuttleImg2 {
+    .shuttleImg {
         width: 20rem;
         transform: translate(-10rem, -10rem) rotate(60deg);
     }
@@ -462,8 +457,7 @@ body.no-scroll {
     .ufoElements:hover {
         transform: translate(-3rem, 20rem) scale(1.1);
     }
-    .ufoImg,
-    .ufoImg2 {
+    .ufoImg {
         width: 14rem;
         height: auto;
     }

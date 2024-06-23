@@ -47,13 +47,11 @@ const Project = () => {
                         with a user-friendly interface.
                     </p>
                     <div className="linkContainer">
-                        <Link href="https://github.com/DaniJounblat1/php-samsung-website.git">
-                            <a className="githubLink">GitHub</a>
+                        <Link href="https://github.com/DaniJounblat1/php-samsung-website.git" className="githubLink">
+                            GitHub
                         </Link>
-                        <Link href="https://samsungdemo.kesug.com">
-                            <a className="githubLink" target="_blank">
-                                Demo
-                            </a>
+                        <Link href="https://samsungdemo.kesug.com" className="githubLink" target="_blank">
+                            Demo
                         </Link>
                     </div>
                 </div>
