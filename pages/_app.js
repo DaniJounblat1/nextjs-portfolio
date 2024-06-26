@@ -8,7 +8,7 @@ import "../styles/header.scss";
 import "../styles/footer.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
-import Loading from "./loading"; // Import the loading component
+import Loading from "./loading"; 
 
 const StarsCanvas = dynamic(() => import("./background"), { ssr: false });
 const AudioButton = dynamic(() => import("./header"), { ssr: false });
@@ -59,6 +59,7 @@ function MyApp({ Component, pageProps }) {
             "/img/mercury.gif",
 
             "/img/blackhole.webm",
+
             "/sound.m4a"
         ];
 
@@ -116,6 +117,7 @@ function MyApp({ Component, pageProps }) {
                 <link rel="preload" href="/img/ufo.gif" as="image" />
                 <link rel="preload" href="/img/blackhole.webm" as="video" />
                 <link rel="preload" href="/sound.m4a" as="audio" />
+                <link rel="preload" href="/img/loading.gif" as="image" />
             </Head>
             {loading ? (
                 <Loading />

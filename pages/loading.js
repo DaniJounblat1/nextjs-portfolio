@@ -1,11 +1,12 @@
 // components/Loading.js
 import React from "react";
+import StarsCanvas from "./background";
 
 const Loading = () => {
     return (
         <div className="loading-screen">
             <img
-                src="/img/m.gif"
+                src="/img/loading.gif"
                 alt="Loading Image"
                 className="loading-image"
             />
@@ -16,6 +17,7 @@ const Loading = () => {
                     <div className="dot"></div>
                     <div className="dot"></div>
                 </div>
+                <StarsCanvas />
             </div>
             <style jsx>{`
                 .loading {
@@ -39,7 +41,7 @@ const Loading = () => {
                     z-index: 9999;
                 }
                 .loading-image {
-                    width: 200px;
+                    width: 160px;
                     height: auto;
                     margin-bottom: 20px;
                     // animation: spin 2s linear infinite;
@@ -69,7 +71,7 @@ const Loading = () => {
                 .dot:nth-child(3) {
                     animation-delay: 0.6s;
                 }
-               
+
                 @keyframes dot-blink {
                     0%,
                     80%,
