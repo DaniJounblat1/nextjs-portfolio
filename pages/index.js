@@ -1,111 +1,116 @@
-import { useEffect, useRef } from 'react';
 
-const Home = () => {
-    const containerRef = useRef(null);
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-    const zoomIn = (element) => {
-        const container = containerRef.current;
-        const names = document.querySelectorAll('.names');
-        names.forEach((name) => {
-            name.style.display = 'none'; // Hide all planet names during zoom-in
+export default function Home() {
+    const [zoomed, setZoomed] = useState(false);
+    const router = useRouter();
+
+    const zoomIn = (event, element) => {
+        event.preventDefault();
+
+        const container = document.getElementById("all");
+        const names = document.querySelectorAll(".names");
+        names.forEach(name => {
+            name.style.display = "none";
         });
 
         const rect = element.getBoundingClientRect();
-        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollX =
+            window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY =
+            window.pageYOffset || document.documentElement.scrollTop;
         const scaleX = window.innerWidth / rect.width;
         const scaleY = window.innerHeight / rect.height;
         const minScale = Math.min(scaleX, scaleY);
 
-        const offsetX = window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
-        const topPadding = 70; // Additional padding to move the element more towards the top, adjust as needed
+        const offsetX =
+            window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
+        const topPadding = 70;
         const offsetY = -(rect.top + scrollY - window.pageYOffset + topPadding);
 
-        container.style.transition = '2s ease'; // Apply transition for zoom-in
+        container.style.transition = "transform 2s ease";
         container.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${minScale})`;
-        container.style.transformOrigin = `${rect.left + scrollX + rect.width / 2}px ${rect.top + scrollY}px`;
-
-        sessionStorage.setItem('zoomed', 'true');
-        sessionStorage.setItem('zoomTransform', container.style.transform);
-        sessionStorage.setItem('zoomOrigin', container.style.transformOrigin);
+        container.style.transformOrigin = `${
+            rect.left + scrollX + rect.width / 2
+        }px ${rect.top + scrollY}px`;
 
         setTimeout(() => {
-            const zoomTarget = element.getAttribute('data-zoom-target');
+            const zoomTarget = element.getAttribute("data-zoom-target");
             if (zoomTarget) {
-                window.location.href = zoomTarget;
+                setZoomed(true);
+                router.push(zoomTarget);
             }
-        }, 1000); // Change delay as needed
+        }, 1200);
     };
 
     const toggleSunlight = () => {
-        const sunCon = document.getElementById('sunCon');
-        const planets = document.querySelectorAll(
-            '.earthElements,.venusElements,.mercuryElements,.spaceBackground,body,.ufoElements,.shuttleElements,.satelliteElements'
-        );
+        const sunCon = document.getElementById("sunCon");
+        const sun = sunCon.querySelector(".sun");
+        const planets = document.querySelectorAll(".planetsElements");
 
-        sunCon.classList.toggle('sunlight'); // Toggle sunlight class for the sun
-        planets.forEach((planet) => {
-            planet.classList.toggle('planetlight'); // Toggle planetlight class for each planet
+        sunCon.classList.toggle("sunlight"); // Toggle sunlight class for the sun
+        planets.forEach(planet => {
+            planet.classList.toggle("planetlight"); // Toggle planetlight class for each planet
         });
     };
-
-    const zoomOut = () => {
-        const container = containerRef.current;
-        container.style.transition = '1.5s ease'; // Apply transition for zoom-out
-        container.style.transform = ''; // Reset the transform
-        container.style.transformOrigin = ''; // Reset the transform origin
-
-        sessionStorage.removeItem('zoomed');
-        sessionStorage.removeItem('zoomTransform');
-        sessionStorage.removeItem('zoomOrigin');
-
-        const names = document.querySelectorAll('.names');
-        names.forEach((name) => {
-            name.style.display = 'block';
-        });
-    };
-
-    useEffect(() => {
-        const isZoomed = sessionStorage.getItem('zoomed');
-        if (isZoomed === 'true') {
-            const container = containerRef.current;
-            container.style.transition = 'none'; // Remove transition during zoom-in
-            container.style.transform = sessionStorage.getItem('zoomTransform');
-            container.style.transformOrigin = sessionStorage.getItem('zoomOrigin');
-            setTimeout(() => {
-                container.style.transition = ''; // Reapply transition after zoom-in
-            }, 0);
-        }
-
-        const timeoutId = setTimeout(zoomOut, 700);
-        return () => clearTimeout(timeoutId);
-    }, []);
-
     return (
         <div>
-            <div id="all" ref={containerRef}>
+            <div id="all">
                 <div className="navbar">{/* Your navbar content */}</div>
 
                 <div id="spaceBackground" className="spaceBackground">
                     <div className="blackholeDiv">
                         <video autoPlay muted loop className="blackhole">
-                            <source src="/img/blackhole.webm" type="video/webm" />
+                            <source
+                                src="/img/blackhole.webm"
+                                type="video/webm"
+                            />
                         </video>
                         <div className="blur"></div>
                     </div>
                     <div className="NameContainer">
                         <div className="FirstNames">
-                            <img className="FirstName" src="/img/dani.png" alt="" loading="lazy" />
-                            <img className="FirstNameStars" src="/img/daniStars.png" alt="" loading="lazy" />
+                            <img
+                                className="FirstName"
+                                src="/img/dani.png"
+                                alt=""
+                                loading="lazy"
+                            />
+                            <img
+                                className="FirstNameStars"
+                                src="/img/daniStars.png"
+                                alt=""
+                                loading="lazy"
+                            />
                         </div>
                         <div className="LastNames">
-                            <img className="LastName" src="/img/jounblat.png" alt="" loading="lazy" />
-                            <img className="LastNameStars" src="/img/jounblatStars.png" alt="" loading="lazy" />
+                            <img
+                                className="LastName"
+                                src="/img/jounblat.png"
+                                alt=""
+                                loading="lazy"
+                            />
+                            <img
+                                className="LastNameStars"
+                                src="/img/jounblatStars.png"
+                                alt=""
+                                loading="lazy"
+                            />
                         </div>
                     </div>
                     <div className="planets" id="planets">
-                        <div className="sunCon" id="sunCon" onClick={toggleSunlight}>
-                            <img className="sun" src="/img/fullsun.gif" alt="" loading="lazy" />
+                        <div
+                            className="sunCon"
+                            id="sunCon"
+                            onClick={toggleSunlight}
+                        >
+                            <img
+                                className="sun"
+                                src="/img/fullsun.gif"
+                                alt=""
+                                loading="lazy"
+                            />
                         </div>
 
                         <div className="earthDiv" id="earth">
@@ -115,7 +120,7 @@ const Home = () => {
                                     src="/img/earth.gif"
                                     alt="Earth"
                                     className="zoom-target earthImg planetsImgs"
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/about"
                                 />
                             </div>
@@ -127,7 +132,7 @@ const Home = () => {
                                     className="zoom-target satelliteImg spaceShipsImgs"
                                     src="/img/satellite.gif"
                                     alt=""
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/contactForm"
                                 />
                             </div>
@@ -139,7 +144,7 @@ const Home = () => {
                                     src="/img/venus.gif"
                                     alt="Venus"
                                     className="zoom-target venusImg planetsImgs"
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/education"
                                 />
                             </div>
@@ -150,7 +155,7 @@ const Home = () => {
                                     className="zoom-target shuttleImg spaceShipsImgs"
                                     src="/img/shuttle.gif"
                                     alt=""
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/nasa"
                                 />
                             </div>
@@ -163,7 +168,7 @@ const Home = () => {
                                     src="/img/mercury.gif"
                                     alt="Mercury"
                                     className="zoom-target mercuryImg planetsImgs"
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/project"
                                 />
                             </div>
@@ -173,7 +178,7 @@ const Home = () => {
                                     className="zoom-target ufoImg spaceShipsImgs"
                                     src="/img/ufo.gif"
                                     alt=""
-                                    onClick={e => zoomIn(e.currentTarget)}
+                                    onClick={e => zoomIn(e, e.target)}
                                     data-zoom-target="/blog"
                                 />
                             </div>
@@ -183,6 +188,4 @@ const Home = () => {
             </div>
         </div>
     );
-};
-
-export default Home;
+}
