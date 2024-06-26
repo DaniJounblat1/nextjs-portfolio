@@ -11,8 +11,7 @@ export default function Home() {
             const container = document.getElementById("all");
             container.style.transition = "none";
             container.style.transform = sessionStorage.getItem("zoomTransform");
-            container.style.transformOrigin =
-                sessionStorage.getItem("zoomOrigin");
+            container.style.transformOrigin = sessionStorage.getItem("zoomOrigin");
             setZoomed(true);
 
             // Force a reflow before applying the transition and zoom out
@@ -34,23 +33,18 @@ export default function Home() {
         });
 
         const rect = element.getBoundingClientRect();
-        const scrollX =
-            window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollY =
-            window.pageYOffset || document.documentElement.scrollTop;
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
         const scaleX = window.innerWidth / rect.width;
         const scaleY = window.innerHeight / rect.height;
         const minScale = Math.min(scaleX, scaleY);
 
-        const offsetX =
-            window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
+        const offsetX = window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
         const topPadding = 70;
         const offsetY = -(rect.top + scrollY - window.pageYOffset + topPadding);
 
         const transform = `translate(${offsetX}px, ${offsetY}px) scale(${minScale})`;
-        const transformOrigin = `${rect.left + scrollX + rect.width / 2}px ${
-            rect.top + scrollY
-        }px`;
+        const transformOrigin = `${rect.left + scrollX + rect.width / 2}px ${rect.top + scrollY}px`;
 
         container.style.transition = "transform 2s ease";
         container.style.transform = transform;
@@ -72,7 +66,7 @@ export default function Home() {
     const zoomOut = () => {
         const container = document.getElementById("all");
         container.style.transition = "transform 2s ease";
-        container.style.transform = "translate(0, 0) scale(1)";
+        container.style.transform = "none";
         container.style.transformOrigin = "center center";
 
         sessionStorage.removeItem("zoomed");
@@ -100,6 +94,7 @@ export default function Home() {
         });
     };
 
+    
     return (
         <div>
             <div id="all">
