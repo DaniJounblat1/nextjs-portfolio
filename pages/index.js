@@ -1,27 +1,10 @@
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Home() {
     const [zoomed, setZoomed] = useState(false);
     const router = useRouter();
-
-    useEffect(() => {
-        const isZoomed = sessionStorage.getItem("zoomed") === "true";
-        if (isZoomed) {
-            const container = document.getElementById("all");
-            container.style.transition = "none";
-            container.style.transform = sessionStorage.getItem("zoomTransform");
-            container.style.transformOrigin = sessionStorage.getItem("zoomOrigin");
-            setZoomed(true);
-
-            // Force a reflow before applying the transition and zoom out
-            container.offsetHeight;
-
-            setTimeout(() => {
-                zoomOut();
-            }, 100);
-        }
-    }, []);
 
     const zoomIn = (event, element) => {
         event.preventDefault();
@@ -33,26 +16,24 @@ export default function Home() {
         });
 
         const rect = element.getBoundingClientRect();
-        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollX =
+            window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY =
+            window.pageYOffset || document.documentElement.scrollTop;
         const scaleX = window.innerWidth / rect.width;
         const scaleY = window.innerHeight / rect.height;
         const minScale = Math.min(scaleX, scaleY);
 
-        const offsetX = window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
+        const offsetX =
+            window.innerWidth / 2 - (rect.left + scrollX + rect.width / 2);
         const topPadding = 70;
         const offsetY = -(rect.top + scrollY - window.pageYOffset + topPadding);
 
-        const transform = `translate(${offsetX}px, ${offsetY}px) scale(${minScale})`;
-        const transformOrigin = `${rect.left + scrollX + rect.width / 2}px ${rect.top + scrollY}px`;
-
         container.style.transition = "transform 2s ease";
-        container.style.transform = transform;
-        container.style.transformOrigin = transformOrigin;
-
-        sessionStorage.setItem("zoomed", "true");
-        sessionStorage.setItem("zoomTransform", transform);
-        sessionStorage.setItem("zoomOrigin", transformOrigin);
+        container.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${minScale})`;
+        container.style.transformOrigin = `${
+            rect.left + scrollX + rect.width / 2
+        }px ${rect.top + scrollY}px`;
 
         setTimeout(() => {
             const zoomTarget = element.getAttribute("data-zoom-target");
@@ -63,38 +44,16 @@ export default function Home() {
         }, 1200);
     };
 
-    const zoomOut = () => {
-        const container = document.getElementById("all");
-        container.style.transition = "transform 2s ease";
-        container.style.transform = "none";
-        container.style.transformOrigin = "center center";
-
-        sessionStorage.removeItem("zoomed");
-        sessionStorage.removeItem("zoomTransform");
-        sessionStorage.removeItem("zoomOrigin");
-
-        setTimeout(() => {
-            const names = document.querySelectorAll(".names");
-            names.forEach(name => {
-                name.style.display = "block";
-            });
-            setZoomed(false);
-        }, 2000);
-    };
-
     const toggleSunlight = () => {
         const sunCon = document.getElementById("sunCon");
-        const planets = document.querySelectorAll(
-            ".earthElements,.venusElements,.mercuryElements,.spaceBackground,body,.ufoElements,.shuttleElements,.satelliteElements"
-        );
+        const sun = sunCon.querySelector(".sun");
+        const planets = document.querySelectorAll(".planetsElements");
 
-        sunCon.classList.toggle("sunlight");
+        sunCon.classList.toggle("sunlight"); // Toggle sunlight class for the sun
         planets.forEach(planet => {
-            planet.classList.toggle("planetlight");
+            planet.classList.toggle("planetlight"); // Toggle planetlight class for each planet
         });
     };
-
-    
     return (
         <div>
             <div id="all">
