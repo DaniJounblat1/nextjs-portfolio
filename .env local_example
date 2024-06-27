@@ -1,0 +1,3 @@
+#create .env.local file and add your information 
+GMAIL_USER=your gmail
+GMAIL_PASS= your gmail password or app password if you using 2 step verification 
