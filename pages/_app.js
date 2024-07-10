@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import "../styles/main.scss";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import Loading from "./loading";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -15,8 +17,7 @@ function MyApp({ Component, pageProps }) {
     const router = useRouter();
 
     useEffect(() => {
-        const imagePaths = ["/img/earth.gif",
-        "/img/blackhole.webm"];
+        const imagePaths = ["/img/earth.gif", "/img/blackhole.webm"];
 
         let loadedItemsCount = 0;
 
