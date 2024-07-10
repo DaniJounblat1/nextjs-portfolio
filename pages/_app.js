@@ -17,12 +17,7 @@ function MyApp({ Component, pageProps }) {
     const router = useRouter();
 
     useEffect(() => {
-        const imagePaths = [
-            "/img/earth.gif",
-            "/img/venus.gif",
-            "/img/mercury.gif",
-            "/img/blackhole.webm"
-        ];
+        const imagePaths = ["/img/earth.gif", "/img/blackhole.webm"];
 
         let loadedItemsCount = 0;
 
