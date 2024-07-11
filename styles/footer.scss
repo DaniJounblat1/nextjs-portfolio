@@ -14,15 +14,12 @@ footer div {
 .footer p {
     margin: 10px 0;
 }
-.cv {
-    display: block;
-    margin: 10px 0;
-    font-size: 16px;
-    text-decoration: none;
+.cvFooter {
+  width: 20rem;
 }
 .footer-title {
     font-size: 1.3em;
-color: #682ae9;
+    color: #682ae9;
     align-items: center;
     padding-left: 3rem;
     margin: 10px 0;
@@ -63,7 +60,7 @@ color: #682ae9;
     .footer p {
         font-size: 12px;
     }
-    .madeWith{
+    .madeWith {
         font-size: 50rem;
     }
 }

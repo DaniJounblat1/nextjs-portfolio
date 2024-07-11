@@ -13,7 +13,7 @@ const Footer = () => {
         >
             <div>
                 <p>Made with ❤️ and +60 ☕ in 2024</p>
-                <a href="./Danijounblat.pdf" download className="cv">
+                <a href="./Danijounblat.pdf" download className="cv cvFooter">
                     Download CV <i className="fa-solid fa-download"></i>
                 </a>
                 <div className="social-links">

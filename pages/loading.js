@@ -1,4 +1,4 @@
-
+// components/Loading.js
 import React, { useEffect, useState } from "react";
 import StarsCanvas from "./background";
 
@@ -35,20 +35,21 @@ const Loading = () => {
                     <div className="dot"></div>
                     <div className="dot"></div>
                 </div>
-                <div className="progress-bar">
-                    <div
-                        className="progress"
-                        style={{ width: `${progress}%` }}
-                    ></div>
-                </div>
-                <StarsCanvas />
             </div>
+            <div className="progress-bar">
+                <div
+                    className="progress"
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
+            <StarsCanvas />
+
             <style jsx>{`
                 .loading {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    flex-direction: column;
+                    flex-direction: row;
                 }
                 .loading-screen {
                     position: fixed;
@@ -75,11 +76,10 @@ const Loading = () => {
                 }
                 .loading-dots {
                     display: flex;
-                    margin-bottom: 10px;
                 }
                 .dot {
-                    width: 10px;
-                    height: 10px;
+                    width: 8px;
+                    height: 8px;
                     margin: 0 5px;
                     background-color: #fff;
                     border-radius: 50%;
@@ -95,15 +95,18 @@ const Loading = () => {
                     animation-delay: 0.6s;
                 }
                 .progress-bar {
-                    width: 80%;
-                    height: 10px;
-                    background-color: #555;
-                    border-radius: 5px;
+                    width: 60%;
+                    height: 11px;
+                    background-color: transparent;
+                    border-radius: 50px;
                     overflow: hidden;
+                    padding: 5px;
+                    border: 1px solid #682ae9;
                 }
                 .progress {
+                    border-radius: 50px;
                     height: 100%;
-                    background-color: #4caf50;
+                    background-color: #682ae9;
                     transition: width 0.3s ease;
                 }
 

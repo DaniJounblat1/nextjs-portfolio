@@ -53,7 +53,7 @@ const About = () => {
                 Dani Jounblat <span>From Lebanon</span>
             </p>
             <a href="./Danijounblat.pdf" download className="cv">
-                Download CV <FontAwesomeIcon icon={faDownload} />
+                DOWNLOAD CV <FontAwesomeIcon icon={faDownload} />
             </a>
             <p className="paragraph">
                 MIS graduate with a passion for web development Front-end &

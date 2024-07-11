@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import "../styles/main.scss";
@@ -6,7 +6,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
-import Loading from "./loading";
 
 const StarsCanvas = dynamic(() => import("./background.tsx"), { ssr: false });
 const Footer = dynamic(() => import("./Footer.js"), { ssr: false });
@@ -15,19 +14,6 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatic
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 10000); // Set loading to false after 10 seconds
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    if (loading) {
-        return <Loading />;
-    }
 
     return (
         <>
