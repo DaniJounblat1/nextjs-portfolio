@@ -1,23 +1,9 @@
-import { useState ,useEffect} from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import Loading from "./loading";
 
 export default function Home() {
     const [zoomed, setZoomed] = useState(false);
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 10000); // Set loading to false after 10 seconds
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    if (loading) {
-        return <Loading />;
-    }
 
     const zoomIn = (event, element) => {
         event.preventDefault();
