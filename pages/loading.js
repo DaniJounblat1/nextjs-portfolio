@@ -1,8 +1,26 @@
-// components/Loading.js
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import StarsCanvas from "./background";
 
 const Loading = () => {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProgress(prevProgress =>
+                prevProgress >= 100 ? 100 : prevProgress + 1
+            );
+        }, 100);
+
+        setTimeout(() => {
+            clearInterval(interval);
+        }, 10000); // 10 seconds
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
+
     return (
         <div className="loading-screen">
             <img
@@ -17,15 +35,20 @@ const Loading = () => {
                     <div className="dot"></div>
                     <div className="dot"></div>
                 </div>
+                <div className="progress-bar">
+                    <div
+                        className="progress"
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                </div>
                 <StarsCanvas />
             </div>
             <style jsx>{`
                 .loading {
                     display: flex;
-
                     align-items: center;
-
                     justify-content: center;
+                    flex-direction: column;
                 }
                 .loading-screen {
                     position: fixed;
@@ -44,15 +67,15 @@ const Loading = () => {
                     width: 160px;
                     height: auto;
                     margin-bottom: 20px;
-                    // animation: spin 2s linear infinite;
                 }
                 .loading-text {
                     color: #fff;
                     font-size: 24px;
-                    margin-right: 10px;
+                    margin-bottom: 10px;
                 }
                 .loading-dots {
                     display: flex;
+                    margin-bottom: 10px;
                 }
                 .dot {
                     width: 10px;
@@ -70,6 +93,18 @@ const Loading = () => {
                 }
                 .dot:nth-child(3) {
                     animation-delay: 0.6s;
+                }
+                .progress-bar {
+                    width: 80%;
+                    height: 10px;
+                    background-color: #555;
+                    border-radius: 5px;
+                    overflow: hidden;
+                }
+                .progress {
+                    height: 100%;
+                    background-color: #4caf50;
+                    transition: width 0.3s ease;
                 }
 
                 @keyframes dot-blink {
