@@ -14,43 +14,33 @@ const Footer = dynamic(() => import("./Footer.js"), { ssr: false });
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
 
 function MyApp({ Component, pageProps }) {
-    const router = useRouter();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 10000); // Set loading to false after 10 seconds
+        }, 15000); // Set loading to false after 15 seconds
 
         return () => clearTimeout(timer);
     }, []);
 
-    if (loading) {
-        return <Loading />;
-    }
-
     return (
         <>
             <Head>
-                <link rel="preload" href="/img/dani.png" as="image" />
-                <link rel="preload" href="/img/daniStars.png" as="image" />
-                <link rel="preload" href="/img/jounblat.png" as="image" />
-                <link rel="preload" href="/img/jounblatStars.png" as="image" />
-                <link rel="preload" href="/img/ss1.jpg" as="image" />
-                <link rel="preload" href="/img/fullsun.gif" as="image" />
                 <link rel="preload" href="/img/earth.gif" as="image" />
-                <link rel="preload" href="/img/satellite.gif" as="image" />
-                <link rel="preload" href="/img/venus.gif" as="image" />
-                <link rel="preload" href="/img/shuttle.gif" as="image" />
-                <link rel="preload" href="/img/mercury.gif" as="image" />
-                <link rel="preload" href="/img/ufo.gif" as="image" />
                 <link rel="preload" href="/img/blackhole.webm" as="video" />
-                <link rel="preload" href="/img/loading.gif" as="image" />
+                <link rel="icon" href="/icon.jpg" />
             </Head>
-            <StarsCanvas />
-            <Component {...pageProps} />
-            <Footer />
-            <Analytics />
+            {loading ? (
+                <Loading />
+            ) : (
+                <>
+                    <StarsCanvas />
+                    <Component {...pageProps} />
+                    <Footer />
+                    <Analytics />
+                </>
+            )}
         </>
     );
 }

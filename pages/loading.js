@@ -14,7 +14,7 @@ const Loading = () => {
 
         setTimeout(() => {
             clearInterval(interval);
-        }, 10000); // 10 seconds
+        }, 15000); // 10 seconds
 
         return () => {
             clearInterval(interval);
