@@ -1,4 +1,3 @@
-// components/Loading.js
 import React, { useEffect, useState } from "react";
 import StarsCanvas from "./background";
 
@@ -8,7 +7,7 @@ const Loading = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress(prevProgress =>
-                prevProgress >= 100 ? 100 : prevProgress + 1
+                prevProgress >= 100 ? 100 : prevProgress + 0.5
             );
         }, 100);
 

@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 15000); // Set loading to false after 15 seconds
+        }, 20000); // Set loading to false after 15 seconds
 
         return () => clearTimeout(timer);
     }, []);
@@ -27,6 +27,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
+                <link rel="preload" href="/img/blackhole.webm" as="video" />
                 <link rel="preload" href="/img/dani.png" as="image" />
                 <link rel="preload" href="/img/daniStars.png" as="image" />
                 <link rel="preload" href="/img/jounblat.png" as="image" />
@@ -39,7 +40,7 @@ function MyApp({ Component, pageProps }) {
                 <link rel="preload" href="/img/shuttle.gif" as="image" />
                 <link rel="preload" href="/img/mercury.gif" as="image" />
                 <link rel="preload" href="/img/ufo.gif" as="image" />
-                <link rel="preload" href="/img/blackhole.webm" as="video" />
+
                 <link rel="preload" href="/img/loading.gif" as="image" />
                 <link rel="icon" href="/icon.jpg" />
             </Head>
