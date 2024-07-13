@@ -61,7 +61,8 @@ body {
     object-fit: cover;
     z-index: -20;
     filter: brightness(0.8);
-    pointer-events: none;
+    pointer-events: none !important;
+    -webkit-pointer-events: none !important;
 }
 
 #all {

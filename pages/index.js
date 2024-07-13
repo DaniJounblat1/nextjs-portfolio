@@ -53,6 +53,7 @@ export default function Home() {
             planet.classList.toggle("planetlight"); // Toggle planetlight class for each planet
         });
     };
+
     return (
         <div>
             <div id="all">
@@ -60,7 +61,7 @@ export default function Home() {
 
                 <div id="spaceBackground" className="spaceBackground">
                     <div className="blackholeDiv">
-                        <video autoPlay muted loop className="blackhole">
+                        <video autoPlay muted loop playsinline className="blackhole">
                             <source
                                 src="/img/blackhole.webm"
                                 type="video/webm"
