@@ -1,9 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Home() {
     const [zoomed, setZoomed] = useState(false);
     const router = useRouter();
+
+    useEffect(() => {
+        // Detect Safari
+        const isSafari =
+            /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+        if (isSafari) {
+            const video = document.querySelector(".blackhole");
+            if (video) {
+                video.addEventListener("webkitbeginfullscreen", event => {
+                    event.preventDefault();
+                    video.webkitExitFullscreen();
+                });
+            }
+        }
+    }, []);
 
     const zoomIn = (event, element) => {
         event.preventDefault();

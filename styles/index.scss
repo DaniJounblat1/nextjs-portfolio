@@ -64,7 +64,16 @@ body {
     pointer-events: none !important;
     -webkit-pointer-events: none !important;
 }
-
+.protection {
+    background-color: transparent;
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9292929;
+    pointer-events: none !important;
+}
 #all {
     position: relative;
     transition: transform 2s ease;

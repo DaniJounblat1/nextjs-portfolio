@@ -11,7 +11,7 @@ import Loading from "./loading";
 const StarsCanvas = dynamic(() => import("./background.tsx"), { ssr: false });
 const Footer = dynamic(() => import("./Footer.js"), { ssr: false });
 
-config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically
+config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
     const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 20000); // Set loading to false after 15 seconds
+        }, 20000);
 
         return () => clearTimeout(timer);
     }, []);
