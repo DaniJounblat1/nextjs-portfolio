@@ -1,10 +1,10 @@
-$purple: #682ae9;
+
 .navbar {
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 90%;
-    height: 15px;
-    box-shadow: 0 0 8px black;
+    height: 2vh;
+    /* box-shadow: 0 0 8px black; */
     background-color: rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     display: flex;
@@ -14,4 +14,3 @@ $purple: #682ae9;
     z-index: 1000;
     /* display: none; */
 }
-
